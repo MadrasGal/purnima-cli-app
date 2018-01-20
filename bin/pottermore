@@ -1,1 +1,5 @@
-pottermore
+#!/usr/bin/env ruby
+
+require './lib/pottermore_scraper'
+
+PottermoreScraper::CLI.new.call
