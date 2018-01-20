@@ -5,46 +5,43 @@ class PottermoreScraper::CLI
   def call 
     puts "\n Nitwit! Blubber! Oddment! Tweak! Welcome to Pottermore!"
     list_menu
-    user_input
+    
   end
+
+  #list menu options"
 
   def list_menu
-    #list menu options"
+    puts "\nMain Menu \n"
+    puts "1. Daily Prophet - News!"
+    puts "2. Diagon Alley - Shop!"
+    puts "3. Evanesco - Exit"
     puts "\n"
-    puts "1. Search by name/character"
-    puts "2. Daily Prophet - News!"
-    puts "3. Sorting Hat"
-    puts "4. Diagon Alley - Shop!"
-    puts "5. Exit"
-    puts "\n"
-
+    puts "To know more, say -- 'Accio' for option 1 or 'Alohomora' for option 2 or 'Exit'\n"
+    user_input 
   end
   
+  #gets user_input to proceed
+
   def user_input  
-    puts "What would you like to do?"
 
-      input = 0
+    # to_do refine menu options
+    # insert check for integer 
+    # option to view menu again
+    # exit message 
 
-      while input !="exit"
+    input = gets.strip.downcase
 
-        input = gets.strip
-
-        case input
-
-          when "1"
+      case input
+          when "accio", "dailyprophet", "1"
             puts "option 1"
-          when "2"
+          when "alohomora", "diagonalley", "2"
             puts "option 2"
-          when "3"
-            puts "option 3"
-          when "4"
-            puts "option 4"
-          when "5"
-            puts "option 5"
-          else
+          when "evanesco","exit","3"
             return 
-        end
-      end 
+          else
+            puts "\n Didn't catch the non-wizard lingo. Here are the menu options, try again. \n"
+            list_menu    
+        end 
   end 
 
-end
+end #end class
