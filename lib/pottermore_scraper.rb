@@ -1,5 +1,3 @@
-require "pottermore_scraper/version"
+require_relative "./pottermore_scraper/version"
 
-module PottermoreScraper
-  # Your code goes here...
-end
+require_relative './pottermore_scraper/cli'
