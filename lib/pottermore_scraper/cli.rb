@@ -16,6 +16,8 @@ class PottermoreScraper::CLI
     #puts "2. Diagon Alley - Shop!"
     puts "2. Evanesco - Exit"
     puts "\n"
+
+    @news = PottermoreScraper::News.items 
     
 
   end
