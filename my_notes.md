@@ -16,7 +16,13 @@ Structure:
   - If 3, Exit program.
   - If none of the above, display error message, list menu again and ask for user input 
 
-
+- Option 1 - Daily Prophet
+  - Displays a list of the most recent news articles in the following format:
+    - No. Title Date Author 
+    - Option to Exit the program or to go back to the main menu 
+  - User types in the number of the article they wish to read
+  - it then displays the article
+  - at the end of the article, user has an option to go back to the option 1 menu or main menu or exit the program
 
 Notes and Ideas: 
 - Make it interactive
