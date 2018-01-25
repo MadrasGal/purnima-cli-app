@@ -2,4 +2,8 @@
 
 require './lib/pottermore_scraper'
 
+require 'pry'
+
+#nokogiri (.css)
+
 PottermoreScraper::CLI.new.call
