@@ -13,10 +13,10 @@ class PottermoreScraper::CLI
   def list_menu
     puts "\nMain Menu \n"
     puts "1. Daily Prophet - News!"
-    puts "2. Diagon Alley - Shop!"
-    puts "3. Evanesco - Exit"
+    #puts "2. Diagon Alley - Shop!"
+    puts "2. Evanesco - Exit"
     puts "\n"
-    puts "To know more, say -- 'Accio' for option 1 or 'Alohomora' for option 2 or 'Exit'\n"
+    puts "To know more, say -- 'Accio' for option 1 or Exit'\n"
     user_input 
   end
   
@@ -34,9 +34,9 @@ class PottermoreScraper::CLI
       case input
           when "accio", "dailyprophet", "1"
             puts "option 1"
-          when "alohomora", "diagonalley", "2"
-            puts "option 2"
-          when "evanesco","exit","3"
+          #when "alohomora", "diagonalley", "2"
+          #  puts "option 2"
+          when "evanesco","exit","2"
             return 
           else
             puts "\n Didn't catch the non-wizard lingo. Here are the menu options, try again. \n"
