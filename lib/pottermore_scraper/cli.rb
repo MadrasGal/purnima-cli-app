@@ -23,7 +23,7 @@ class PottermoreScraper::CLI
 
     @news.each.with_index(1) do|news_item,index|
      puts "#{index}. #{news_item.title} - #{news_item.date}"
-    
+    binding.pry
     end
 
   end

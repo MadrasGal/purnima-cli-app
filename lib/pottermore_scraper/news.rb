@@ -15,15 +15,13 @@ class PottermoreScraper::News
     @news = []
 
 
-    def save_news
-        @news << self.scrape_news 
+    def self.save_news(news_item)
+        @news << news_item 
         @news
     end 
 
     def self.scrape_news
-        #Scrape pottermore.com/news to find news articles 
-        #Extract properties
-        #instantiate news_item
+
         #return array of news items 
 
         doc = Nokogiri::HTML(open("https://www.pottermore.com/news"))
@@ -32,11 +30,11 @@ class PottermoreScraper::News
         news_item = self.new
         news_item.title = doc.search("h2.hub-item--featured__title").text.strip
         news_item.date = doc.search("time.hub-item--featured__date.News").text.strip
-         
-        binding.pry
-
-    end
-
     
 
+        element = doc.at_css('div.hub-item--featured a[href]')
+        news_item.url = element['href']               
+        
+        self.save_news(self)
+    end
 end 
