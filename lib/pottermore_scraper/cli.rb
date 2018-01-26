@@ -22,7 +22,7 @@ class PottermoreScraper::CLI
     #display list of news items 
 
     @news.each.with_index(1) do|news_item,index|
-     puts "#{index}. #{news_item.title} - #{news_item.date} - #{news_item.author}"
+     puts "#{index}. #{news_item.title} - #{news_item.date}"
     
     end
 
@@ -45,7 +45,7 @@ class PottermoreScraper::CLI
             when "accio", "dailyprophet", "1"
               puts "option 1"
               the_ news_item = @news[input.to_i-1]
-              puts "#{index}. #{news_item.title} - #{news_item.date} - #{news_item.author}"
+              puts "#{index}. #{news_item.title} - #{news_item.date}"
 
             when "evanesco","exit","2"
               return 
