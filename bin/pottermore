@@ -4,6 +4,7 @@ require './lib/pottermore_scraper'
 
 require 'pry'
 
-#nokogiri (.css)
+#nokogiri
+#open-uri for API
 
 PottermoreScraper::CLI.new.call
