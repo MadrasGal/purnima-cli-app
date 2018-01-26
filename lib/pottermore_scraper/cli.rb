@@ -18,7 +18,13 @@ class PottermoreScraper::CLI
     puts "\n"
 
     @news = PottermoreScraper::News.items 
-    
+
+    #display list of news items 
+
+    @news.each.with_index(1) do|news_item,index|
+     puts "#{index}. #{news_item.title} - #{news_item.date} - #{news_item.author}"
+      binding.pry
+    end
 
   end
   
@@ -34,6 +40,7 @@ class PottermoreScraper::CLI
     while input != 'exit'
       puts "To know more, say -- 'Accio' for option 1 or Exit'\n"
       input = gets.strip.downcase
+
 
         case input
             when "accio", "dailyprophet", "1"
