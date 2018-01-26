@@ -1,10 +1,6 @@
 #!/usr/bin/env ruby
 
 require './lib/pottermore_scraper'
-
-require 'pry'
-
-#nokogiri
-#open-uri for API
-
 PottermoreScraper::CLI.new.call
+
+#note: nokogiri and pry added as dependencies in the gemspecfile
