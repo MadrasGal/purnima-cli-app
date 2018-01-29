@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
+require 'uri'
 
 class News
 
@@ -28,22 +29,32 @@ class News
           
             news_item.take(10).each do |news_doc|
                 
-                #div.hub-item__content.h2.hub-item__title
                 news_title = news_doc.search("h2.hub-item__title").text.strip
                 
                 news_date = news_doc.search("time.hub-item__date.News").text.strip
 
-                element = doc.at_css('div.hub-item a[href]')
+                element = doc.at_css('div.l-hub-grid a[href]')
                
                 news_url = element['href'] 
-                             
-                news = self.create_news_item(news_title, news_date, news_url)
                
 
+                # save instance           
+                news = self.create_news_item(news_title, news_date, news_url)
                 news.save
                 news
                       
             end        
+    end
+
+    def self.scrape_content(news_url)
+
+        #scraping for content 
+        full_url = URI.join('https://pottermore.com', news_url).to_s
+        doc_content = Nokogiri::HTML(open(full_url))
+                
+        news_content = doc_content.css("h2.news-story__intro")
+                          
+        news_content  
     end
 
     def self.create_news_item(news_title, news_date, news_url)
@@ -51,6 +62,7 @@ class News
         news_item.title = news_title 
         news_item.date = news_date  
         news_item.url = news_url 
+        #news_item.content = news_content
 
         news_item
 
