@@ -63,7 +63,8 @@ class PottermoreScraper::CLI
       system("clear")
       puts "\nTitle: #{news_list.title}"
       puts "\nDate: #{news_list.date}"
-      puts "\nContent: #{news_list.url}"
+      puts "\nContent: \n#{news_list.content}"
+
       else        
         list_menu
     end
