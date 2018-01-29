@@ -12,10 +12,9 @@ class PottermoreScraper::CLI
   #List Main Menu options and ask for user input - read news or exit program
 
   def list_menu
-    puts "\nMain Menu \n"
+    puts "\nMain Menu"
     puts "1. Daily Prophet - News!"
-    puts "2. Evanesco - Exit\n"
-
+    puts "2. Evanesco - Exit"
   end
   
 
@@ -36,13 +35,14 @@ class PottermoreScraper::CLI
             else
               puts "\n Didn't catch the non-wizard lingo. Try again. \n"
               list_menu
-          end 
+        end 
     end 
   end 
 
   # Display news articles and ask for user input - read individual news article or exit to main menu  
 
   def display_news
+    system("clear")
     puts "\n Daily Prophet News"
 
     news= News.items
@@ -60,10 +60,10 @@ class PottermoreScraper::CLI
 
     if News.valid_number?(input)
       news_list = News.find_by_id(input)
-
-      puts "Title: #{news_list.title}"
-      puts "Date: #{news_list.date}"
-      #puts "Content: #{news_list.body}"
+      system("clear")
+      puts "\nTitle: #{news_list.title}"
+      puts "\nDate: #{news_list.date}"
+      puts "\nContent: #{news_list.url}"
       else        
         list_menu
     end
