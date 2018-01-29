@@ -9,8 +9,7 @@ class News
     
     def self.items
         self.destroy_all
-        self.scraper
-        
+        self.scraper 
     end
 
     def self.scraper
@@ -27,17 +26,19 @@ class News
             news_item = doc.search("div.hub-item__content")
 
           
-            news_item.each do |news_doc|
+            news_item.take(10).each do |news_doc|
                 
                 #div.hub-item__content.h2.hub-item__title
                 news_title = news_doc.search("h2.hub-item__title").text.strip
                 
                 news_date = news_doc.search("time.hub-item__date.News").text.strip
 
-                #element = news_doc.at_css('div#other-featured-items.news-hub__other-featured.hub-item a')
-                #news_url = element['href'] 
-                              
-                news = self.create_news_item(news_title, news_date)
+                element = doc.at_css('div.hub-item a[href]')
+               
+                news_url = element['href'] 
+                             
+                news = self.create_news_item(news_title, news_date, news_url)
+               
 
                 news.save
                 news
@@ -45,11 +46,11 @@ class News
             end        
     end
 
-    def self.create_news_item(news_title, news_date)
+    def self.create_news_item(news_title, news_date, news_url)
         news_item = self.new
         news_item.title = news_title 
         news_item.date = news_date  
-        #news_item.url = news_url 
+        news_item.url = news_url 
 
         news_item
 
