@@ -1,6 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 require 'uri'
+require 'rubygems'
 
 class News
 
@@ -24,7 +25,7 @@ class News
 
             doc = Nokogiri::HTML(open("https://www.pottermore.com/news"))
              
-            news_item = doc.search("div.hub-item__content")
+            news_item = doc.search(".hub-item")
 
           
             news_item.take(10).each do |news_doc|
@@ -33,36 +34,35 @@ class News
                 
                 news_date = news_doc.search("time.hub-item__date.News").text.strip
 
-                element = doc.at_css('div.l-hub-grid a[href]')
-               
-                news_url = element['href'] 
-               
-
+                news_url = news_doc.search('a[href]').first.attributes['href'].value
                 # save instance           
                 news = self.create_news_item(news_title, news_date, news_url)
                 news.save
                 news
-                      
+                     
             end        
     end
 
     def self.scrape_content(news_url)
 
         #scraping for content 
-        full_url = URI.join('https://pottermore.com', news_url).to_s
-        doc_content = Nokogiri::HTML(open(full_url))
+        full_url = URI.join('https://www.pottermore.com', news_url).to_s
+        
+        doc = Nokogiri::HTML(open(full_url))
                 
-        news_content = doc_content.css("h2.news-story__intro")
-                          
+        news_content = doc.search("div#news-body.news-story__content p").inner_text
+                 
         news_content  
+
     end
 
-    def self.create_news_item(news_title, news_date, news_url)
+    def self.create_news_item(news_title, news_date, news_url, news_content=nil)
         news_item = self.new
         news_item.title = news_title 
         news_item.date = news_date  
         news_item.url = news_url 
-        #news_item.content = news_content
+        
+        news_item.content = self.scrape_content(news_item.url)
 
         news_item
 
