@@ -9,10 +9,13 @@ class PottermoreScraper::CLI
     user_input  
   end
 
+  #List Main Menu options and ask for user input - read news or exit program
+
   def list_menu
     puts "\nMain Menu \n"
     puts "1. Daily Prophet - News!"
     puts "2. Evanesco - Exit\n"
+
   end
   
 
@@ -25,7 +28,7 @@ class PottermoreScraper::CLI
         case input
             when "accio", "dailyprophet", "1"  
               display_news
-    
+
             when "evanesco","exit","2"
               puts "\nPip Pip, goodbye!"
               puts "\n"
@@ -34,39 +37,37 @@ class PottermoreScraper::CLI
               puts "\n Didn't catch the non-wizard lingo. Try again. \n"
               list_menu
           end 
-    end #while loop end 
+    end 
   end 
 
+  # Display news articles and ask for user input - read individual news article or exit to main menu  
 
   def display_news
-    puts "\n Daily Prophet News" 
-    @news = PottermoreScraper::News.items 
-    @news.each.with_index(1) do |news_item, index|
-      puts "\n#{index}. #{news_item.title} - #{news_item.date}"
+    puts "\n Daily Prophet News"
+
+    news= News.items
+    puts "\n"
+    
+    news.each.with_index(1) do |news_item, index|
+      puts "#{index}. #{news_item.title} - #{news_item.date}"
     end 
-    user_input_news
-  end
 
-  def user_input_news
+    #ask user for which news item they would like to view in more detail
+    input = ' '
 
-      #ask user for which news item they would like to view in more detail
-      input = ' '
+    puts "\nEnter the number of the article to read or type 'exit' to go back to the main menu."
+    input = gets.strip
 
-      puts "Enter the number of the article to read or go back to the main menu."
-      input = gets.strip
+    if News.valid_number?(input)
+      news_list = News.find_by_id(input)
 
-      if News.valid_number?(input)
-        news = News.find_by_id(input)
-
-        puts "Title: #{news.title}"
-        puts "Date: #{news.date}"
-        puts "Body: #{news.body}"
-
-        display_news
-      else
+      puts "Title: #{news_list.title}"
+      puts "Date: #{news_list.date}"
+      #puts "Content: #{news_list.body}"
+      else        
         list_menu
-      end
+    end
 
-    end 
+  end 
 
-end #end class
+end 
