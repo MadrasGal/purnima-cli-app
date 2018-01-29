@@ -1,8 +1,9 @@
 # PottermoreScraper
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/pottermore_scraper`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to Pottermore!! This is a Command Line Interface (CLI) based gem that gathers recent news articles related to the wizarding world of Harry Potter from www.pottermore.com and provides the user with a short text narrative on their choice of news item. 
 
-TODO: Delete this and the text above, and describe your gem
+In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/pottermore_scraper`. To experiment with that code, run `bin/console` for an interactive prompt.
+
 
 ## Installation
 
@@ -22,7 +23,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+- The user is presented with a menu to view the news articles. Type 'accio' or 1 to view the most recent news articles sorted by date.
+- To view the text of the news item in more detail, type the number of the news article. 
+- Typing 'exit' or 'evanesco' at any time will bring the user to the main menu or exit the program.
 
 ## Development
 
@@ -32,7 +35,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/<github username>/pottermore_scraper.
+Bug reports and pull requests are welcome on GitHub at https://github.com/MadrasGal/purnima-cli-app
 
 
 ## License
