@@ -50,8 +50,12 @@ class PottermoreScraper::CLI
     
     news.each.with_index(1) do |news_item, index|
       puts "#{index}. #{news_item.title} - #{news_item.date}"
-    end 
+    end
 
+    read_news 
+  end 
+    
+  def read_news
     #ask user for which news item they would like to view in more detail
     input = ' '
 
@@ -65,8 +69,13 @@ class PottermoreScraper::CLI
       puts "\nDate: #{news_list.date}"
       puts "\nContent: \n#{news_list.content}"
 
-      else        
-        list_menu
+
+    elsif input == 'exit'
+      list_menu 
+    else
+      puts "\n Invalid choice. Try again."
+      read_news         
+        
     end
 
   end 
