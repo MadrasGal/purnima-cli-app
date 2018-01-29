@@ -24,9 +24,6 @@ Structure:
   - it then displays the article
   - at the end of the article, user has an option to go back to the option 1 menu or main menu or exit the program
 
-Notes and Ideas: 
-- Make it interactive
-- Display fun facts for various options. 
 
                
             
