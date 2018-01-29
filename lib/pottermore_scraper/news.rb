@@ -3,12 +3,12 @@ require 'open-uri'
 
 class News
 
-    attr_accessor :title, :date, :url 
+    attr_accessor :title, :date, :url, :content 
 
-    @@news = [] #stores all instances of this class with their attributes
+    @@news = [] #stores all instances of this class with attributes (title, date, url, content)
     
     def self.items
-        self.destroy_all
+        self.destroy_all 
         self.scraper 
     end
 
