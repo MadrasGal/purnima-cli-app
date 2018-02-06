@@ -21,7 +21,7 @@ class News_scraper
 
             # return news 
 
-            news = News.create_news_item(news_title, news_date, news_url, news_content)
+            news = News.new(news_title, news_date, news_url, news_content)
             
             news   
         end        
