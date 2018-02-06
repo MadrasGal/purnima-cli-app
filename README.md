@@ -7,10 +7,19 @@ In this directory, you'll find the files you need to be able to package up your 
 
 ## Installation
 
+To install from git use these instructions:
+
+1-clone repo 
+2-​'​cd​'​ into repo 
+3-​'​bundle install​'​ 
+4-run 'ruby bin/pottermore'
+
+To install gem froem rubygems use these instructions: 
+
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'pottermore_scraper'
+#gem 'pottermore_scraper'
 ```
 
 And then execute:
