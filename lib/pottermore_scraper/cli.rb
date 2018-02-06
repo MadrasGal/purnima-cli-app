@@ -46,6 +46,7 @@ class PottermoreScraper::CLI
     puts "\n Daily Prophet News"
 
     news= News.items
+
     puts "\n"
     
     news.each.with_index(1) do |news_item, index|
@@ -68,7 +69,6 @@ class PottermoreScraper::CLI
       puts "\nTitle: #{news_list.title}"
       puts "\nDate: #{news_list.date}"
       puts "\nContent: \n#{news_list.content}"
-
 
     elsif input == 'exit'
       list_menu 
