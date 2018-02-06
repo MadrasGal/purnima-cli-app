@@ -17,18 +17,15 @@ class News
 
      end
 
-    
-    def self.create_news_item(news_title, news_date, news_url, news_content)
-        news_item = self.new
-        news_item.title = news_title 
-        news_item.date = news_date  
-        news_item.url = news_url 
-        news_item.content = news_content
+    def initialize (news_title, news_date, news_url, news_content)
+        @title = news_title 
+        @date = news_date  
+        @url = news_url 
+        @content = news_content
 
-        #Instance saved in @@news
-        news_item.save
-        news_item
-    end
+        save
+
+    end 
 
     def save  
         @@news << self 
