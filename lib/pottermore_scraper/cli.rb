@@ -20,7 +20,7 @@ class PottermoreScraper::CLI
 
   def user_input  
     input = 'nil'
-    while input != 'exit'
+    while input 
       puts "\nTo see more, enter 'accio' or '1' for news, or '2' to Exit:\n"
       input = gets.strip.downcase
 
